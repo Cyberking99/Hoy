@@ -54,6 +54,8 @@ const config: Config = {
       },
       fontFamily: {
         coolvetica: ["coolvetica", "sans-serif"],
+        roboto:["Roboto", "serif"],
+        openSan:["Open Sans", "serif"]
       },
       boxShadow: { "popover-shadow": "0px 0px 50px 2px #EC796B33" },
     },
