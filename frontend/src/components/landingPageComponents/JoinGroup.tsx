@@ -4,7 +4,7 @@ import DesignImage2 from "../../../public/assets/pseudo2.png";
 import JoinGroupPic from "../../../public/assets/JoinGroup.png";
 const JoinGroup = () => {
   return (
-    <div className="relative flex h-screen w-full flex-col items-center bg-[#0F072C] px-10 py-36 md:h-[58rem]">
+    <div className="relative flex h-screen w-full flex-col items-center bg-[#0F072C] px-10 py-20">
       <div className="flex flex-col items-center">
         <h1 className="font-roboto text-center text-xl font-bold text-white md:text-3xl">
           Join various group of experts
@@ -15,13 +15,13 @@ const JoinGroup = () => {
           more
         </p>
       </div>
-      <div className="mt-10 md:h-[30rem] md:w-[67rem]">
+      <div className="mt-10 md:h-[20rem] md:w-[67rem]">
         <Image
           src={JoinGroupPic}
           width={500}
           height={500}
           alt="Logo"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </div>
 

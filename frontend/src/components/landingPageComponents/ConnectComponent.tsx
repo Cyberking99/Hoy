@@ -4,13 +4,13 @@ import DesignImage1 from "../../../public/assets/pseudo1.png"
 import DesignImage2 from "../../../public/assets/pseudo2.png"
 const ConnectComponent = () => {
   return (
-    <div className=" relative flex h-screen md:h-[58rem] w-full flex-col items-center bg-[#0F072C] py-36 px-10">
+    <div className=" relative flex h-screen  w-full flex-col items-center bg-[#0F072C] py-20 px-10">
       <div className="flex flex-col items-center">
         <h1 className="font-bold font-roboto text-xl text-center md:text-3xl text-white">Connect with people around the World</h1>
         <p className="font-normal text-sm md:text-[30px] md:w-[63%] text-center mt-5 font-openSan">Whenever you are ready, just ask about your health and get detailed responds on how to improve your general living and also get to know more</p>
       </div>
-      <div className="md:w-[67rem] md:h-[30rem]  mt-10">
-        <Image src={GroupPic} width={500} height={500} alt="Logo" className="w-full h-full object-cover"/>
+      <div className="md:w-[67rem] md:h-[20rem]  mt-10">
+        <Image src={GroupPic} width={500} height={500} alt="Logo" className="w-full h-full object-contain"/>
       </div>
 
       {/* design images */}

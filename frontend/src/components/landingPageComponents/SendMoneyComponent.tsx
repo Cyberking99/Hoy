@@ -5,7 +5,7 @@ import SendMoney from "../../../public/assets/money.png"
 
 const SendMoneyComponent = () => {
   return (
-    <div className="relative flex h-screen w-full flex-col items-center bg-[#0F072C] px-10 py-36 md:h-[58rem]">
+    <div className="relative flex h-screen w-full flex-col items-center bg-[#0F072C] px-10 py-20">
       <div className="flex flex-col items-center">
         <h1 className="font-roboto text-center text-xl font-bold text-white md:text-3xl">
           Send money to friends through our app
@@ -16,13 +16,13 @@ const SendMoneyComponent = () => {
           more
         </p>
       </div>
-      <div className="mt-10 md:h-[30rem] md:w-[67rem]">
+      <div className="mt-10 md:h-[20rem] md:w-[67rem]">
         <Image
           src={SendMoney}
           width={500}
           height={500}
           alt="Logo"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </div>
 

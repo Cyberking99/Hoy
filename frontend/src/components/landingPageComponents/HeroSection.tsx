@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="h-screen px-5 py-10 md:h-[901px] md:px-24">
+    <div className="h-screen px-5 py-10  md:px-24">
       <nav className="flex flex-row items-center justify-between">
         <div className="h-10 w-11">
           <Image src={LogoPng} alt="logo" width={500} height={500} />
@@ -31,7 +31,7 @@ const HeroSection = () => {
 
         <button
           type="button"
-          className="mb-2 mt-36 border-2 border-[#FFFFFF] rounded-full bg-transparent shadow-lg px-7 py-4 text-sm font-medium text-[#3ECF8E]  hover:border-[#3ECF8E] hover:border-4 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 flex flex-row items-center"
+          className="mb-2 mt-24 border-2 border-[#FFFFFF] rounded-full bg-transparent shadow-lg px-7 py-4 text-sm font-medium text-[#3ECF8E]  hover:border-[#3ECF8E] hover:border-4 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 flex flex-row items-center"
         >
           Get started
           <div className="h-5 w-5 ml-4">
