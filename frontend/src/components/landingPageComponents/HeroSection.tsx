@@ -9,12 +9,12 @@ const HeroSection = () => {
         <div className="h-10 w-11">
           <Image src={LogoPng} alt="logo" width={500} height={500} />
         </div>
-        <button
-          type="button"
+        <Link 
+          href={"/dashboard"}
           className="mb-2 me-2 rounded-lg bg-[#13333C] px-7 py-4 text-sm font-medium text-[#3ECF8E] hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
         >
-          Connect Wallet
-        </button>
+          Get Started
+        </Link>
       </nav>
 
       <main className="mt-[4rem] flex flex-col items-center">

@@ -13,8 +13,10 @@ const page = () => {
     setActiveTab(currentTab)
   }
   return (
-    <div className="relative flex h-full w-full flex-col items-center bg-[#0F072C] md:px-10">
-      <div className="mb-3 mt-10 flex w-[50%] flex-row justify-between">
+    <div className="relative flex h-full w-full flex-col items-center bg-[#0F072C] md:px-10 px-4">
+
+      {/* progress indicators */}
+      <div className="mt-10 flex w-[50%] flex-row justify-between">
         <span
           className={`${activeTab == 1 ? "rounded-full bg-green-500 px-4 py-2 font-roboto font-bold text-black" : "rounded-full bg-green-300 px-4 py-2 font-roboto font-bold text-black"} `}
         >
@@ -34,16 +36,16 @@ const page = () => {
         </span>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-2 md:mt-10">
         {/* onbording */}
 
         {/* Connect wallet */}
         {activeTab == 1 && (
-          <div className="mt-5 flex flex-col items-center rounded border-2 border-gray-400 px-5 py-10 shadow-lg">
-            <h2 className="my-2 font-coolvetica text-2xl font-semibold text-white">
+          <div className="mt-5 flex flex-col items-center rounded md:border-2 border-gray-400 px-5 py-10 shadow-lg">
+            <h2 className="my-2 font-coolvetica text-lg md:text-2xl font-semibold text-white">
               Connect Your Wallet
             </h2>
-            <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
+            <p className="mb-3 font-coolvetica text-center text-base font-normal text-gray-400">
               Connect your wallet to enable encrypted messaging
             </p>
 
@@ -59,8 +61,8 @@ const page = () => {
 
         {/* setup profile  */}
         {activeTab == 2 && (
-          <div className="mt-5 flex flex-col items-center rounded border-gray-400 px-3 py-10 shadow-lg md:border-2 md:px-5">
-            <h2 className="my-2 font-coolvetica text-xl font-semibold text-white">
+          <div className="flex flex-col items-center rounded border-gray-400 px-3 py-10 shadow-lg md:border-2 md:px-5">
+            <h2 className="my-2 font-coolvetica text-lg md:text-xl font-semibold text-white">
               Set UP Your Profile
             </h2>
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
@@ -121,8 +123,8 @@ const page = () => {
         {/* welcome section  */}
 
         {activeTab == 3 && (
-          <div className="mt-5 flex flex-col items-center rounded-xl border-2 border-gray-400 px-5 py-10 shadow-lg">
-            <h2 className="my-2 font-coolvetica text-2xl font-semibold text-white">
+          <div className="mt-5 flex flex-col items-center rounded-xl md:border-2 border-gray-400 px-5 py-10 shadow-lg">
+            <h2 className="my-2 font-coolvetica text-lg md:text-2xl font-semibold text-white">
               Welcome to Hoy
             </h2>
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
@@ -139,7 +141,7 @@ const page = () => {
               />
             </div>
 
-            <Link href={"/dashboard/explore"} className="mt-5 w-full bg-[#13333C] py-2 text-[#3ECF8E] hover:bg-gray-100">
+            <Link href={"/dashboard/explore"} className="mt-5 w-full bg-[#13333C] py-2 text-[#3ECF8E] hover:bg-gray-100 text-center">
               Get Started
             </Link>
           </div>

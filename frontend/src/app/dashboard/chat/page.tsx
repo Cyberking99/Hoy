@@ -6,7 +6,8 @@ import GallaryIcon from "../../../../public/assets/imageGallary.png";
 import SendToken from "../../../../public/assets/money-send.png";
 import VoiceIcon from "../../../../public/assets/keyboard_voice.png";
 import SendMessageIcon from "../../../../public/assets/Send_Submit_Success_Icon_UIA.png";
-import MessageIcon from "../../../../public/assets/messageIcon.png"
+import MessageIcon from "../../../../public/assets/messageIcon.png";
+import GroupImage from "../../../../public/assets/GroupImage1.png";
 import { useState } from "react";
 const page = () => {
   const [activeStatus, setActiveStatus] = useState("chat");
@@ -18,12 +19,14 @@ const page = () => {
   };
 
   const handleChatSelection = (chat: any) => {
-    setSelectedChat(chat); 
+    setSelectedChat(chat);
   };
   return (
     <div className="flex h-full w-full flex-col bg-[#0F072C] md:flex-row">
       {/* Chat and Group Section */}
       <div className="flex h-full w-full flex-col px-3 py-3 md:w-[30%] md:px-5">
+
+
         {/* Chat and Group Buttons */}
         <div className="mt-5 flex h-10 w-full flex-row justify-between md:w-[70%]">
           <button
@@ -55,9 +58,32 @@ const page = () => {
       </div>
 
       {/* Chat Section */}
-      <div className="relative h-full w-full bg-gray-100 md:bg-gray-200">
+      <div className="relative h-full w-full bg-gray-100 md:bg-gray-200 ">
         {selectedChat ? (
           <div>
+
+            {/* top header display of who you are chating with */}
+            <div className="bg-blue-500 mb-4 flex flex-row items-center md:mb-0 py-4 px-4">
+              <div className="relative h-12 w-12 rounded-full">
+                <Image
+                  src={GroupImage}
+                  width={500}
+                  height={500}
+                  alt="group icon"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col items-start">
+                <h2 className="ml-3 font-roboto text-lg font-semibold text-white md:text-[20px]">
+                  Gabriel Oke Adedayo
+                </h2>
+                <div className=" flex flex-row items-start ml-2">
+                  <span className="ml-3 font-roboto text-xs font-normal text-white "> online</span>
+                  <span className="h-3 w-3 rounded-full bg-green-500 ring-2 ring-[#241C3F80] ml-4"></span>
+                </div>
+              </div>
+            </div>
+
             {/* Chat Input */}
             <div className="absolute bottom-0 flex w-full flex-col bg-[#0F072C] px-4 py-3 md:flex-row md:px-10 md:py-5">
               <div className="flex w-full flex-row items-center rounded-full bg-white px-3 py-2 md:w-[80%]">
@@ -112,7 +138,9 @@ const page = () => {
             </div>
           </div>
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-center text-white">
+
+          // display if a friend or group has not been selected yet
+          <div className="flex h-full w-full items-center justify-center text-center text-white px-2">
             <div className="my-2 p-4">
               <Image
                 width={500}

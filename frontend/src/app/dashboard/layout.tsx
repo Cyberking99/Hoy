@@ -13,9 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Main Content */}
         <div className="flex h-full w-full flex-col">
           {/* NavBar */}
-          {/* <div className="h-[50px] w-full flex-none md:h-[10%]">
+          <div className="h-[50px] w-full flex-none md:h-[10%]">
             <NavBar />
-          </div> */}
+          </div>
 
           {/* Content */}
           <div className="flex-grow ">{children}</div>
