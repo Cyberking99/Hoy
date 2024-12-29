@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-coolvetica text-sm text-text-primary md:text-md">
         <StarknetProvider>{children}</StarknetProvider>
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   );
