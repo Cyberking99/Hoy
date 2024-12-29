@@ -1,12 +1,10 @@
 import Image from "next/image";
-import LogoPng from "../../../public/assets/App Logo Inspiraton 104.png";
+
 const NavBar = () => {
   return (
     <div className="flex w-full flex-row items-center justify-between bg-[#000000] px-4 py-3 sm:px-6 md:py-4">
       {/* Logo */}
-      <div className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-11">
-        <Image src={LogoPng} alt="logo" width={500} height={500} />
-      </div>
+     
 
       {/* Connect Wallet Button */}
       <button
