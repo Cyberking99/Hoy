@@ -8,9 +8,9 @@ import Link from "next/link";
 const SideBar = () => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-[#141023] px-2 pt-5 md:w-20">
-      <div className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-11">
+      <Link href={"/"} className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-11">
         <Image src={LogoPng} alt="logo" width={500} height={500} />
-      </div>
+      </Link>
 
       <div className="mt-16">
         {/* Menu Icon */}

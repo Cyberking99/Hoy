@@ -3,8 +3,8 @@ import NavBar from "@/components/dashboardComponents/NavBar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden md:flex-row">
-      <div className="flex h-full w-full flex-row items-start">
+    <div className="flex h-screen w-full flex-col  md:flex-row">
+      <div className="flex h-full w-full flex-row items-start ">
         {/* Sidebar */}
         <div>
           <SideBar />
@@ -13,9 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Main Content */}
         <div className="flex h-full w-full flex-col">
           {/* NavBar */}
-          <div className="h-[50px] w-full flex-none md:h-[10%]">
+          {/* <div className="h-[50px] w-full flex-none md:h-[10%]">
             <NavBar />
-          </div>
+          </div> */}
 
           {/* Content */}
           <div className="flex-grow ">{children}</div>

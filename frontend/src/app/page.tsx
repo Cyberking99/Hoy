@@ -6,7 +6,7 @@ import JoinGroup from "@/components/landingPageComponents/JoinGroup";
 
 export default function Home() {
   return (
-    <main className="bg-[#0F072C] h-full">
+    <main className="bg-gradient-to-r from-[#0F072C] via-[#291d55] to-[#0F072C] h-full">
       <HeroSection/>
       <ConnectComponent/>
       <JoinGroup/>

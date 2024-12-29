@@ -2,10 +2,12 @@ import Image from "next/image";
 import GroupImage from "../../../public/assets/GroupImage1.png";
 import AddFriendIcon from "../../../public/assets/profile-add.png";
 
-const Friends = () => {
+const Friends = ({ onSelect }) => {
   return (
     <div>
-      <div className="mb-3 flex flex-col items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
+      <div 
+      onClick={()=> onSelect("Gabriel")}
+      className="mb-3 flex flex-col items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
         {/* Friend Name and Location */}
         <div className="mb-4 flex flex-row items-center md:mb-0">
           <div className="relative h-6 w-6 rounded-full">
