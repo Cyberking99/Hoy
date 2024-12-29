@@ -1,13 +1,23 @@
 use core::starknet::{ContractAddress, get_caller_address};
+
+#[derive(Drop, Serde, starknet::Store,PartialEq)]
+    pub struct Message{
+    from: ContractAddress,
+    to: ContractAddress,
+    message:ByteArray,
+    }
+
 #[starknet::interface]
 pub trait IEncryptedMessaggingApp<TContractState> {
-
 fn registerUser(ref self: TContractState, address:ContractAddress, userName: ByteArray) -> bool;
 fn addFriends(ref self: TContractState, address:ContractAddress, userName: ByteArray) -> bool;
+fn sendMessage(ref self: TContractState, address:ContractAddress, message: ByteArray) -> bool;
+fn getMessages(ref self: TContractState, address:ContractAddress) -> Message;
 }
 
 #[starknet::contract]
 mod MessagingApp {
+use super::Message;
  use starknet::storage::{
         StoragePointerReadAccess, StoragePointerWriteAccess, StoragePathEntry,Map,Vec,VecTrait, MutableVecTrait
     };
@@ -18,12 +28,14 @@ mod MessagingApp {
     user: Map<ContractAddress, User>,
     users_count: u128,
     user_registered: Map<ContractAddress, bool>,
-    user_friendList: Map<ContractAddress, Vec<User>>
+    user_friendList: Map<ContractAddress, Vec<User>>,
+    user_message: Map<ContractAddress, Message>
     }
     #[derive(Drop, Serde, starknet::Store,PartialEq)]
     pub struct User{
     address: ContractAddress,
     userName:ByteArray,
+    
     }
 
     #[event]
@@ -72,7 +84,31 @@ userName: userName
     };
 
     self.user_friendList.entry(caller).append().write(friend);
+
 return true;
     }
+
+
+fn sendMessage(ref  self: ContractState, address: ContractAddress, message: ByteArray) -> bool
+{
+let message = Message{
+from: get_caller_address(),
+to:address, 
+message: message
+};
+self.user_message.entry(address).write(message);
+
+return true;
+}
+fn getMessages(ref self: ContractState, address:ContractAddress) -> Message{
+let message = self.user_message.entry(address).read();
+return message;
+}
+
+fn exploreFriends() -> bool{
+
+}
+
+
 }
 }
