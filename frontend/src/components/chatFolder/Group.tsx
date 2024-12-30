@@ -1,7 +1,12 @@
 import Image from "next/image";
 import GroupImage from "../../../public/assets/GroupImage1.png";
 import JoinGroupIcon from "../../../public/assets/profile-2user.png";
-const Group = ({ onSelect }) => {
+
+interface GroupProps {
+  onSelect: (name: string) => void;
+}
+
+const Group: React.FC<GroupProps> = ({ onSelect }) => {
   return (
     <div>
       <div className="mb-5 flex flex-col md:items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
