@@ -4,12 +4,14 @@ import JoinGroupIcon from "../../../public/assets/profile-2user.png";
 const Group = ({ onSelect }) => {
   return (
     <div>
-        <div className="mb-5 flex flex-col items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
+      <div className="mb-5 flex flex-col md:items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
         {/* Group Name and Icon */}
-        <div className="mb-4 flex flex-row items-center md:mb-0 ">
-          <div 
-          onClick={()=> onSelect("Cohort 1")}
-          className="relative h-6 w-6 rounded-full">
+        
+        <div className="flex flex-row items-center md:mb-0">
+          <div
+            onClick={() => onSelect("Cohort 1")}
+            className="relative h-6 w-6 rounded-full"
+          >
             <Image
               src={GroupImage}
               width={500}
@@ -25,7 +27,7 @@ const Group = ({ onSelect }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Group
+export default Group;

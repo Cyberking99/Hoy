@@ -7,9 +7,9 @@ const Friends = ({ onSelect }) => {
     <div>
       <div 
       onClick={()=> onSelect("Gabriel")}
-      className="mb-3 flex flex-col items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
+      className="mb-3 flex flex-col md:items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
         {/* Friend Name and Location */}
-        <div className="mb-4 flex flex-row items-center md:mb-0">
+        <div className="flex flex-row items-center md:mb-0">
           <div className="relative h-6 w-6 rounded-full">
             <Image
               src={GroupImage}
@@ -31,9 +31,9 @@ const Friends = ({ onSelect }) => {
         </div>
       </div>
 
-      <div className="mb-3 flex flex-col items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
+      <div className="mb-3 flex flex-col md:items-center justify-between rounded-xl bg-[#241C3F80] px-4 py-3 md:flex-row md:px-3 md:py-2">
         {/* Friend Name and Location */}
-        <div className="mb-4 flex flex-row items-center md:mb-0">
+        <div className=" flex flex-row items-center md:mb-0">
           <div className="relative h-6 w-6 rounded-full">
             <Image
               src={GroupImage}

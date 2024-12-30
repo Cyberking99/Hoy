@@ -18,13 +18,12 @@ const page = () => {
     setSelectedChat(null);
   };
 
-  const handleChatSelection = (chat: any) => {
-    setSelectedChat(chat);
-  };
+  const handleChatSelection = (chat: any) => setSelectedChat(chat);
+
   return (
-    <div className="flex h-full w-full flex-col bg-[#0F072C] md:flex-row">
+    <div className="flex h-full w-full flex-col bg-[#0F072C] md:flex-row px-4">
       {/* Chat and Group Section */}
-      <div className="flex h-full w-full flex-col px-3 py-3 md:w-[30%] md:px-5">
+      <div className="flex md:h-full w-full flex-col px-3 py-3 md:w-[30%] md:px-5">
 
 
         {/* Chat and Group Buttons */}
@@ -60,7 +59,7 @@ const page = () => {
       {/* Chat Section */}
       <div className="relative h-full w-full bg-gray-100 md:bg-gray-200 ">
         {selectedChat ? (
-          <div>
+          <div className="mx-3">
 
             {/* top header display of who you are chating with */}
             <div className="bg-blue-500 mb-4 flex flex-row items-center md:mb-0 py-4 px-4">
@@ -85,14 +84,14 @@ const page = () => {
             </div>
 
             {/* Chat Input */}
-            <div className="absolute bottom-0 flex w-full flex-col bg-[#0F072C] px-4 py-3 md:flex-row md:px-10 md:py-5">
+            <div className="absolute bottom-0 flex w-full  bg-[#0F072C] px-4 py-3 flex-row md:px-10 md:py-5 items-center">
               <div className="flex w-full flex-row items-center rounded-full bg-white px-3 py-2 md:w-[80%]">
                 <input
                   type="text"
                   placeholder=""
                   className="flex-1 px-2 text-sm outline-none md:text-base"
                 />
-                <div className="flex flex-row items-center space-x-3">
+                <div className="hidden   md:flex flex-row items-center space-x-3">
                   <div className="h-6 w-6 md:h-10 md:w-10">
                     <Image
                       src={GallaryIcon}
@@ -124,7 +123,7 @@ const page = () => {
               </div>
 
               {/* Send Message Button */}
-              <div className="ml-0 mt-3 md:ml-10 md:mt-0">
+              <div className="ml-3 md:ml-10 md:mt-0">
                 <div className="h-6 w-6 md:h-10 md:w-10">
                   <Image
                     src={SendMessageIcon}

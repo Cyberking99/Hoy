@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Menu from "../../../public/assets/menu.png";
+
 import Group from "../../../public/assets/group.png";
 import Chat from "../../../public/assets/chat.png";
 import LogoPng from "../../../public/assets/App Logo Inspiraton 104.png";
@@ -13,10 +13,7 @@ const SideBar = () => {
       </Link>
 
       <div className="mt-16">
-        {/* Menu Icon */}
-        <div className="h-5 w-5 md:h-10 md:w-10">
-          <Image src={Menu} alt="menu Image" width={500} height={500} />
-        </div>
+        
 
         {/* Chat and Group */}
         <div className="mt-10 flex flex-col items-center space-y-10">
