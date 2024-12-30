@@ -83,6 +83,13 @@ const page = () => {
               </div>
             </div>
 
+            {/* chat box  */}
+
+            {/* <div className="bg-red-200 w-">
+
+            </div> */}
+
+
             {/* Chat Input */}
             <div className="absolute bottom-0 flex w-full  bg-[#0F072C] px-4 py-3 flex-row md:px-10 md:py-5 items-center">
               <div className="flex w-full flex-row items-center rounded-full bg-white px-3 py-2 md:w-[80%]">
