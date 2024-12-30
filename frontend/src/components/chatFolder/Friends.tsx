@@ -2,7 +2,11 @@ import Image from "next/image";
 import GroupImage from "../../../public/assets/GroupImage1.png";
 import AddFriendIcon from "../../../public/assets/profile-add.png";
 
-const Friends = ({ onSelect }) => {
+interface FriendsProps {
+  onSelect: (name: string) => void;
+}
+
+const Friends: React.FC<FriendsProps> = ({ onSelect }) => {
   return (
     <div>
       <div 
