@@ -9,9 +9,8 @@ import { useState } from "react";
 const page = () => {
   const [activeTab, setActiveTab] = useState(1);
 
-  const handleNavigation=(currentTab:number)=>{
-    setActiveTab(currentTab)
-  }
+  const handleNavigation=(currentTab:number)=> setActiveTab(currentTab)
+  
   return (
     <div className="relative flex h-full w-full flex-col items-center bg-[#0F072C] md:px-10 px-4">
 

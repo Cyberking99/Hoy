@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StarknetProvider } from "~/StarknetProvider";
-import Footer from "@/components/footer/Footer";
 
 
 export const metadata: Metadata = {
@@ -31,7 +30,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-coolvetica text-sm text-text-primary md:text-md">
         <StarknetProvider>{children}</StarknetProvider>
-        {/* <Footer/> */}
       </body>
     </html>
   );
