@@ -19,17 +19,17 @@ const HeroSection = () => {
 
       <main className="mt-[4rem] flex flex-col items-center">
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto">Welcome to</h1>
-          <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto text-center">
-            Messaging <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Dapp</span>
+          <h1 className="text-l text-[#E8E1AD] md:text-9xl font-roboto text-center">Welcome to
+            <br />
+            <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Hoy</span>
           </h1>
           <p className="mt-[2rem] text-center text-base text-white md:mt-[4rem] md:text-[2rem] font-openSan">
-            The messaging dApp is a simple messaging app that allows users to
+            Hoy is a simple messaging dApp that allows users to
             connect, chat, and send money.
           </p>
         </div>
 
-        <Link
+        {/* <Link
         href={"/dashboard"}
           type="button"
           className="mb-2 mt-24 border-2 border-[#FFFFFF] rounded-full bg-transparent shadow-lg px-7 py-4 text-sm font-medium text-[#3ECF8E]  hover:border-[#3ECF8E] hover:border-4 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 flex flex-row items-center"
@@ -38,7 +38,7 @@ const HeroSection = () => {
           <div className="h-5 w-5 ml-4">
             <Image src={ArrowFoward} alt="logo" width={500} height={500} />
           </div>
-        </Link>
+        </Link> */}
       </main>
     </div>
   );
