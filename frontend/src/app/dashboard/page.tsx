@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Contract } from "starknet";
 import { useAccount } from "@starknet-react/core";
 import ConnectButton from "../../app/components/lib/Connect";
 
@@ -9,9 +10,15 @@ import SearchIcon from "../../../public/assets/Search_Icons_UIA.png";
 import MessageIcon from "../../../public/assets/messageIcon.png";
 import AddFriendIcon from "../../../public/assets/profile-add.png";
 import HoyABI from "../../app/ABIs/Hoy.json";
+import { toast } from "react-toastify";
+import { stringToByteArray } from "../helper";
 
 const Page = () => {
-  const { address } = useAccount();
+  const contractAddress = "0x00b9a8a80470ce7a83ef10bc78b15dd0aa6963b412bb866d01cb1d11ac5e4c40";
+  const { address, account } = useAccount();
+
+  const hoyContract = new Contract(HoyABI, contractAddress, account);
+
   const [activeTab, setActiveTab] = useState(1);
   const [profileData, setProfileData] = useState({
     displayName: "",
@@ -32,9 +39,25 @@ const Page = () => {
     setProfileData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleNavigation(3);
+
+    try {
+      console.log(address, profileData);
+      await hoyContract.registerUser(address, profileData.displayName, profileData.location, profileData.city);
+      setProfileData({
+        displayName: "",
+        location: "",
+        city: "",
+      });
+
+      toast.success("Registration successful!");
+      handleNavigation(3);
+    } catch (error) {
+      console.error("Error registering:", error);
+      toast.error(String(error))
+    }
+    
   };
 
   return (
