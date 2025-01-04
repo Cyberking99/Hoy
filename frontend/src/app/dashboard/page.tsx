@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { stringToByteArray } from "../helper";
 
 const Page = () => {
-  const contractAddress = "0x00b9a8a80470ce7a83ef10bc78b15dd0aa6963b412bb866d01cb1d11ac5e4c40";
+  const contractAddress = "0x052a77b76c76e9b27ddbeb8053cd6ccb22ff45d9d899492243cd40173348459c";
   const { address, account } = useAccount();
 
   const hoyContract = new Contract(HoyABI, contractAddress, account);
@@ -25,6 +25,13 @@ const Page = () => {
     location: "",
     city: "",
   });
+  interface UserInfo {
+    displayName: string;
+    location: string;
+    city: string;
+  }
+  
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   useEffect(() => {
     if (address) {
@@ -59,6 +66,25 @@ const Page = () => {
     }
     
   };
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        if (!address) {
+          console.warn("Address is undefined, skipping user info fetch.");
+          return;
+        }
+        const userInfo = await hoyContract.getUser(address);
+        setUserInfo(userInfo);
+        console.log(userInfo);
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+  
+    getUserInfo();
+  }, [address]);
+  
 
   return (
     <div className="relative flex h-full w-full flex-col items-center bg-[#0F072C] md:px-10 px-4">
@@ -153,7 +179,7 @@ const Page = () => {
         {activeTab === 3 && (
           <div className="mt-5 flex flex-col items-center rounded-xl md:border-2 border-gray-400 px-5 py-10 shadow-lg">
             <h2 className="my-2 font-coolvetica text-lg md:text-2xl font-semibold text-white">
-              Welcome to Hoy
+              Welcome { userInfo?.displayName} to Hoy
             </h2>
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
               You're all set to start messaging
