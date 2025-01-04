@@ -223,7 +223,7 @@ mod MessagingApp {
             // == address{
             // self.user_friendList.entry(caller).append().write(
             // self.user_friendRequest.entry(caller).at(i).read());
-            // true
+            true
         }
     }
 }
