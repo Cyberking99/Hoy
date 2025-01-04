@@ -28,6 +28,7 @@ pub trait IEncryptedMessaggingApp<TContractState> {
     fn sendMessage(ref self: TContractState, address: ContractAddress, message: ByteArray) -> bool;
     fn getMessages(ref self: TContractState, address: ContractAddress) -> Array<Message>;
     fn getFriends(self: @TContractState, address: ContractAddress) -> Array<User>;
+    fn getAllUsers(self: @TContractState)->Array<User>;
 }
 
 #[starknet::contract]
@@ -42,6 +43,7 @@ mod MessagingApp {
     use array::ArrayTrait;
     #[storage]
     struct Storage {
+        users: Vec<User>,
         user: Map<ContractAddress, User>,
         users_count: u128,
         user_registered: Map<ContractAddress, bool>,
@@ -76,14 +78,16 @@ mod MessagingApp {
             location: ByteArray,
             city: ByteArray
         ) -> bool {
-            // check if user is registerd
+            //check if user is registerd
             assert(address != 0.try_into().unwrap(), ADDR_ZERO);
             assert(!self.user_registered.entry(address).read(), REGISTERED_ADDR);
             let newUser = User {
                 address: address, userName: userName, location: location, city: city
             };
 
-            self.user.entry(address).write(newUser);
+            self.users.append().write(newUser);
+
+            // self.user.entry(address).write(newUser);
             // self
             // .emit(
             // UserRegistered{
@@ -136,6 +140,14 @@ mod MessagingApp {
             };
 
             messages
+        }
+
+        fn getAllUsers(self: @ContractState)->Array<User> {
+        let mut allusers = array![];
+        for i in 0..self.users.len() {
+        allusers.append(self.users.at(i).read());
+        };
+        allusers
         }
     }
 }
