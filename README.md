@@ -26,7 +26,7 @@ In today’s digital age, communication is increasingly vulnerable to surveillan
 - Built with Next.js for a responsive and intuitive user interface.
 - Wallet connect/integration using Starknet SDK.
 - Message storage using Calimero TypeScript Client SDK
-Backend:
+- Calimero TypeScript Client SDK
 
 **Starknet (Smart Contract):**
 - Utilized for storing cryptographic proofs and message metadata securely.
