@@ -1,45 +1,110 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Contract } from "starknet";
+import { useAccount } from "@starknet-react/core";
+import ConnectButton from "../../app/components/lib/Connect";
+
 import SearchIcon from "../../../public/assets/Search_Icons_UIA.png";
 import MessageIcon from "../../../public/assets/messageIcon.png";
 import AddFriendIcon from "../../../public/assets/profile-add.png";
-import { useState } from "react";
+import HoyABI from "../../app/ABIs/Hoy.json";
+import { toast } from "react-toastify";
+import { stringToByteArray } from "../helper";
 
-const page = () => {
+const Page = () => {
+  const contractAddress = "0x052a77b76c76e9b27ddbeb8053cd6ccb22ff45d9d899492243cd40173348459c";
+  const { address, account } = useAccount();
+
+  const hoyContract = new Contract(HoyABI, contractAddress, account);
+
   const [activeTab, setActiveTab] = useState(1);
-
-  const handleNavigation=(currentTab:number)=> setActiveTab(currentTab)
+  const [profileData, setProfileData] = useState({
+    displayName: "",
+    location: "",
+    city: "",
+  });
+  interface UserInfo {
+    displayName: string;
+    location: string;
+    city: string;
+  }
   
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+
+  useEffect(() => {
+    if (address) {
+      setActiveTab(2);
+    }
+  }, [address]);
+
+  const handleNavigation = (currentTab: number) => setActiveTab(currentTab);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setProfileData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      console.log(address, profileData);
+      await hoyContract.registerUser(address, profileData.displayName, profileData.location, profileData.city);
+      setProfileData({
+        displayName: "",
+        location: "",
+        city: "",
+      });
+
+      toast.success("Registration successful!");
+      handleNavigation(3);
+    } catch (error) {
+      console.error("Error registering:", error);
+      toast.error(String(error))
+    }
+    
+  };
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        if (!address) {
+          console.warn("Address is undefined, skipping user info fetch.");
+          return;
+        }
+        const userInfo = await hoyContract.getUser(address);
+        setUserInfo(userInfo);
+        console.log(userInfo);
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+  
+    getUserInfo();
+  }, [address]);
+  
+
   return (
     <div className="relative flex h-full w-full flex-col items-center bg-[#0F072C] md:px-10 px-4">
-
-      {/* progress indicators */}
+      {/* Progress Indicators */}
       <div className="mt-10 flex w-[50%] flex-row justify-between">
-        <span
-          className={`${activeTab == 1 ? "rounded-full bg-green-500 px-4 py-2 font-roboto font-bold text-black" : "rounded-full bg-green-300 px-4 py-2 font-roboto font-bold text-black"} `}
-        >
-          1
-        </span>
-
-        <span
-          className={`${activeTab == 2 ? "rounded-full bg-green-500 px-4 py-2 font-roboto font-bold text-black" : "rounded-full bg-green-300 px-4 py-2 font-roboto font-bold text-black"} `}
-        >
-          2
-        </span>
-
-        <span
-          className={`${activeTab == 3 ? "rounded-full bg-green-500 px-4 py-2 font-roboto font-bold text-black" : "rounded-full bg-green-300 px-4 py-2 font-roboto font-bold text-black"} `}
-        >
-          3
-        </span>
+        {[1, 2, 3].map((tab) => (
+          <span
+            key={tab}
+            className={`rounded-full ${
+              activeTab === tab ? "bg-green-500" : "bg-green-300"
+            } px-4 py-2 font-roboto font-bold text-black`}
+          >
+            {tab}
+          </span>
+        ))}
       </div>
 
       <div className="mt-2 md:mt-10">
-        {/* onbording */}
-
-        {/* Connect wallet */}
-        {activeTab == 1 && (
+        {/* Step 1: Connect Wallet */}
+        {activeTab === 1 && (
           <div className="mt-5 flex flex-col items-center rounded md:border-2 border-gray-400 px-5 py-10 shadow-lg">
             <h2 className="my-2 font-coolvetica text-lg md:text-2xl font-semibold text-white">
               Connect Your Wallet
@@ -47,68 +112,59 @@ const page = () => {
             <p className="mb-3 font-coolvetica text-center text-base font-normal text-gray-400">
               Connect your wallet to enable encrypted messaging
             </p>
-
-            <button
-              type="button"
-              className="rounded-lg bg-[#13333C] px-4 py-2 text-xs font-medium text-[#3ECF8E] hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:px-5 sm:py-3 sm:text-sm md:px-7 md:py-4 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
-              onClick={()=>handleNavigation(2)}
-            >
-              Connect Wallet
-            </button>
+            <ConnectButton />
           </div>
         )}
 
-        {/* setup profile  */}
-        {activeTab == 2 && (
+        {/* Step 2: Set Up Profile */}
+        {activeTab === 2 && (
           <div className="flex flex-col items-center rounded border-gray-400 px-3 py-10 shadow-lg md:border-2 md:px-5">
             <h2 className="my-2 font-coolvetica text-lg md:text-xl font-semibold text-white">
-              Set UP Your Profile
+              Set Up Your Profile
             </h2>
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
               Choose how you will appear to others
             </p>
-
             <div className="my-2 rounded-full border-2 p-4">
               <Image
                 width={500}
                 height={500}
                 src={AddFriendIcon}
-                alt="profile icon"
+                alt="Profile Icon"
                 className="h-10 w-10"
               />
             </div>
-
-            <form action="" className="mt-3 w-[90%] md:w-[80%]" onSubmit={()=>handleNavigation(3)}>
+            <form onSubmit={handleSubmit} className="mt-3 w-[90%] md:w-[80%]">
               <div className="mb-3 h-10 w-full">
                 <input
                   type="text"
-                  name=""
-                  id=""
+                  name="displayName"
                   placeholder="Input Display Name"
+                  value={profileData.displayName}
+                  onChange={handleInputChange}
                   className="h-full w-full rounded-md border-2 px-2 font-roboto text-black shadow-lg outline"
                 />
               </div>
-
               <div className="mb-3 h-10 w-full">
                 <input
                   type="text"
-                  name=""
-                  id=""
+                  name="location"
                   placeholder="Location..."
+                  value={profileData.location}
+                  onChange={handleInputChange}
                   className="h-full w-full rounded-md border-2 px-2 font-roboto text-black shadow-lg outline"
                 />
               </div>
-
               <div className="h-10 w-full">
                 <input
                   type="text"
-                  name=""
-                  id=""
+                  name="city"
                   placeholder="City..."
+                  value={profileData.city}
+                  onChange={handleInputChange}
                   className="h-full w-full rounded-md border-2 px-2 font-roboto text-black shadow-lg outline"
                 />
               </div>
-
               <button
                 type="submit"
                 className="mt-5 w-full bg-[#13333C] py-2 text-[#3ECF8E] hover:bg-gray-100"
@@ -119,28 +175,28 @@ const page = () => {
           </div>
         )}
 
-        {/* welcome section  */}
-
-        {activeTab == 3 && (
+        {/* Step 3: Welcome */}
+        {activeTab === 3 && (
           <div className="mt-5 flex flex-col items-center rounded-xl md:border-2 border-gray-400 px-5 py-10 shadow-lg">
             <h2 className="my-2 font-coolvetica text-lg md:text-2xl font-semibold text-white">
-              Welcome to Hoy
+              Welcome { userInfo?.displayName} to Hoy
             </h2>
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
               You're all set to start messaging
             </p>
-
             <div className="my-2 p-4">
               <Image
                 width={500}
                 height={500}
                 src={MessageIcon}
-                alt="profile icon"
+                alt="Welcome Icon"
                 className="h-14 w-14"
               />
             </div>
-
-            <Link href={"/dashboard/explore"} className="mt-5 w-full bg-[#13333C] py-2 text-[#3ECF8E] hover:bg-gray-100 text-center">
+            <Link
+              href="/dashboard/explore"
+              className="mt-5 w-full bg-[#13333C] py-2 text-[#3ECF8E] hover:bg-gray-100 text-center"
+            >
               Get Started
             </Link>
           </div>
@@ -150,4 +206,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

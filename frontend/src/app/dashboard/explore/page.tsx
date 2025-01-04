@@ -6,6 +6,7 @@ import Image from "next/image";
 import Group from "@/components/explore/Group";
 import Friends from "@/components/explore/Friends";
 import { useState } from "react";
+
 const page = () => {
   const [activeTab, setActiveTab] = useState("friends");
   const handdleNavigation = (state: string) => {

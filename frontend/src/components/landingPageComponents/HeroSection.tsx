@@ -21,11 +21,10 @@ const HeroSection = () => {
         <div className="flex flex-col items-center">
           <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto">Welcome to</h1>
           <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto text-center">
-            Messaging <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Dapp</span>
+            <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Hoy</span>
           </h1>
           <p className="mt-[2rem] text-center text-base text-white md:mt-[4rem] md:text-[2rem] font-openSan">
-            The messaging dApp is a simple messaging app that allows users to
-            connect, chat, and send money.
+            Your no. 1 messaging app where Privacy Speaks Louder.
           </p>
         </div>
 
