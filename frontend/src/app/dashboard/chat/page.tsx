@@ -1,4 +1,5 @@
 "use client";
+import { SetupModal } from '@calimero-is-near/calimero-p2p-sdk';
 import Friends from "@/components/chatFolder/Friends";
 import Group from "@/components/chatFolder/Group";
 import Image from "next/image";
@@ -8,10 +9,27 @@ import VoiceIcon from "../../../../public/assets/keyboard_voice.png";
 import SendMessageIcon from "../../../../public/assets/Send_Submit_Success_Icon_UIA.png";
 import MessageIcon from "../../../../public/assets/messageIcon.png";
 import GroupImage from "../../../../public/assets/GroupImage1.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAccessToken } from '@calimero-is-near/calimero-p2p-sdk';
+import { getNodeUrl, getStorageApplicationId } from '../../../utils/node';
+import {
+  setAppEndpointKey,
+  setStorageApplicationId,
+} from '../../../utils/storage';
+
 const page = () => {
   const [activeStatus, setActiveStatus] = useState("chat");
   const [selectedChat, setSelectedChat] = useState(null);
+
+  const accessToken = getAccessToken();
+
+  useEffect(() => {
+    if (!accessToken) {
+      console.log("No access token");
+    } else {
+      console.log("Access token", accessToken);
+    }
+  }, [accessToken]);
 
   const handleStatusChange = (state: string) => {
     setActiveStatus(state);

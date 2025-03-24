@@ -19,6 +19,7 @@ const HeroSection = () => {
 
       <main className="mt-[4rem] flex flex-col items-center">
         <div className="flex flex-col items-center">
+jaja
           <h1 className="text-l text-[#E8E1AD] md:text-9xl font-roboto text-center">Welcome to
             <br />
             <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Hoy</span>
@@ -26,6 +27,14 @@ const HeroSection = () => {
           <p className="mt-[2rem] text-center text-base text-white md:mt-[4rem] md:text-[2rem] font-openSan">
             Hoy is a simple messaging dApp that allows users to
             connect, chat, and send money.
+
+          <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto">Welcome to</h1>
+          <h1 className="text-2xl text-[#E8E1AD] md:text-9xl font-roboto text-center">
+            <span className="text-[#3ECF8E] bg-gradient-to-r from-[#3ECF8E] to-[#236D5A] bg-clip-text text-transparent">Hoy</span>
+          </h1>
+          <p className="mt-[2rem] text-center text-base text-white md:mt-[4rem] md:text-[2rem] font-openSan">
+            Your no. 1 messaging app where Privacy Speaks Louder.
+ main
           </p>
         </div>
 

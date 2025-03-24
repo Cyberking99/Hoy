@@ -8,9 +8,14 @@ import Chat from "../../../public/assets/chat.png";
 import CloseMenuIcon from "../../../public/assets/Close_Icons_UIA.png";
 import Link from "next/link";
 import { useState } from "react";
+import { useAccount } from "@starknet-react/core";
+import ConnectButton from "../../app/components/lib/Connect";
+import AddressBar from "../../app/components/lib/AddressBar";
+
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { account } = useAccount();
 
   const handIsOpen = () => setIsOpen((prev) => !prev);
   return (
@@ -40,7 +45,7 @@ const NavBar = () => {
       {/* profile picture and wallet address */}
 
       <div className="ml-auto flex flex-row items-center">
-        <div className="h-10 w-10">
+        {/* <div className="h-10 w-10">
           <Image
             src={ProfilePicture}
             width={500}
@@ -49,7 +54,8 @@ const NavBar = () => {
             className="h-full w-full object-contain"
           />
         </div>
-        <h2 className="ml-2 font-roboto text-[#3ECF8E]">0xeb7C....38B41</h2>
+        <h2 className="ml-2 font-roboto text-[#3ECF8E]">0xeb7C....38B41</h2> */}
+        <AddressBar />
       </div>
 
       {/* mobile nav menu */}
