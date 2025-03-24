@@ -2,6 +2,7 @@ import Image from "next/image";
 import GroupPic from "../../../public/assets/groupImage.png"
 import DesignImage1 from "../../../public/assets/pseudo1.png"
 import DesignImage2 from "../../../public/assets/pseudo2.png"
+import ConnectButton from "../../app/components/lib/Connect";
 const ConnectComponent = () => {
   return (
     <div className=" relative flex h-screen  w-full flex-col items-center bg-[#0F072C] py-20 px-10">

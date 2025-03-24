@@ -9,6 +9,25 @@ import ConnectButton from "../../app/components/lib/Connect";
 import SearchIcon from "../../../public/assets/Search_Icons_UIA.png";
 import MessageIcon from "../../../public/assets/messageIcon.png";
 import AddFriendIcon from "../../../public/assets/profile-add.png";
+jaja
+import { useState } from "react";
+import ConnectButton from "../components/lib/Connect"
+
+const page = () => {
+  const [activeTab, setActiveTab] = useState(1);
+  
+  const [profilePic, setProfilePic] = useState<string | null>(null);
+  const handleProfilePicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePic(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
 import HoyABI from "../../app/ABIs/Hoy.json";
 import { toast } from "react-toastify";
 import { stringToByteArray } from "../helper";
@@ -18,6 +37,7 @@ const Page = () => {
   const { address, account } = useAccount();
 
   const hoyContract = new Contract(HoyABI, contractAddress, account);
+  main
 
   const [activeTab, setActiveTab] = useState(1);
   const [profileData, setProfileData] = useState({
@@ -112,6 +132,17 @@ const Page = () => {
             <p className="mb-3 font-coolvetica text-center text-base font-normal text-gray-400">
               Connect your wallet to enable encrypted messaging
             </p>
+ jaja
+
+            {/* <button
+              type="button"
+              className="rounded-lg bg-[#13333C] px-4 py-2 text-xs font-medium text-[#3ECF8E] hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:px-5 sm:py-3 sm:text-sm md:px-7 md:py-4 dark:border-gray-600 dark:bg-gray-800 dark:text-[#3ECF8E] dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+              onClick={()=>handleNavigation(2)}
+            >
+              Connect Wallet
+            </button> */}
+
+ main
             <ConnectButton />
           </div>
         )}
@@ -125,7 +156,12 @@ const Page = () => {
             <p className="mb-3 font-coolvetica text-base font-normal text-gray-400">
               Choose how you will appear to others
             </p>
+ jaja
+
+            {/* <div className="my-2 rounded-full border-2 p-4">
+
             <div className="my-2 rounded-full border-2 p-4">
+ main
               <Image
                 width={500}
                 height={500}
@@ -133,8 +169,50 @@ const Page = () => {
                 alt="Profile Icon"
                 className="h-10 w-10"
               />
+ jaja
+            </div> */}
+            <div className="flex justify-center mb-6">
+          {/* Profile Picture or SVG */}
+          <label className="relative cursor-pointer">
+            {profilePic ? (
+              <img
+                src={profilePic}
+                alt="Profile"
+                className="w-16 h-16 rounded-full object-cover border-2 border-white"
+              />
+            ) : (
+              <div className="w-16 h-16 bg-white text-primary flex items-center justify-center rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM2 20c0-2.761 4.582-5 10-5s10 2.239 10 5"
+                  />
+                </svg>
+              </div>
+            )}
+            {/* Hidden File Input */}
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleProfilePicChange}
+            />
+          </label>
+        </div>
+
+            <form action="" className="mt-3 w-[90%] md:w-[80%]" onSubmit={()=>handleNavigation(3)}>
+
             </div>
             <form onSubmit={handleSubmit} className="mt-3 w-[90%] md:w-[80%]">
+ main
               <div className="mb-3 h-10 w-full">
                 <input
                   type="text"
